@@ -1,0 +1,20 @@
+{% set posts = __SELF__.posts %}
+{% for post in posts %}
+<div class="card">
+    <img class="card__image" src="{{ post.featured_images.first.getPath() }}" alt="{{ post.featured_images.first.title }}">
+    <h3 class="card__heading">{{ post.categories.pluck('name').join(', ') }}</h3>
+    <h2 class="card__title">{{ post.title }}</h2>
+    <p class="card__para">
+        {{ post.excerpt | raw }}
+    </p>
+    <hr>
+    <div class="card-learnmore">
+        <h3 class="card__learnmore">Learn more></h3>
+        <div class="card-blogger">
+            <h4 class="card-blogger__date">{{ post.published_at.locale('en').format('d M Y') }}</h4>
+            <h3 class="card-blogger__name">Default User</h3>
+            <img class="card-blogger__image" src="{{ 'assets/img/cardbloggerimgedit.png' | theme }}" alt="">
+        </div>
+    </div>
+</div>
+{% endfor %}

@@ -1,0 +1,46 @@
+{% if paginator.hasPages %}
+<div class="card__slider">
+    <ul class="card__slider-list">
+        {#-- Previous Page Link --#}
+        {% if paginator.onFirstPage %}
+            <li class="card__slider-item disabled" aria-disabled="true" aria-label="{{ 'system::lang.pagination.previous'|trans }}">
+                <a href=""><img src="{{ 'assets/img/arrowleft.png' | theme }}" alt=""></a>
+            </li>
+        {% else %}
+            <li class="card__slider-item first">
+                <a href="{{ paginator.previousPageUrl }}"><img src="{{ 'assets/img/arrowleft.png' | theme }}" alt=""></a>
+            </li>
+        {% endif %}
+
+        {#-- Pagination Elements --#}
+        {% for element in elements %}
+            {% if element is iterable %}
+                {#-- Array Of Links --#}
+                {% for page, url in element %}
+                    {% if page == paginator.currentPage %}
+                        <li class="card__slider-item card__slider-item--active" aria-current="page">
+                            <a href="">{{ page }}</a>
+                        </li>
+                    {% else %}
+                        <li class="card__slider-item"><a class="page-link" href="{{ url }}">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {#-- "Three Dots" Separator --#}
+                <li class="card__slider-item middle disabled" aria-disabled="true"><span class="page-link">{{ element }}</span></li>
+            {% endif %}
+        {% endfor %}
+
+        {#-- Next Page Link --#}
+        {% if paginator.hasMorePages %}
+            <li class="card__slider-item last">
+                <a href="{{ paginator.nextPageUrl }}"><img src="{{ 'assets/img/arrowright.png' | theme }}" alt=""></a>
+            </li>
+        {% else %}
+            <li class="card__slider-item last disabled" aria-disabled="true" aria-label="{{ 'system::lang.pagination.next'|trans }}">
+                <a href=""><img src="{{ 'assets/img/arrowright.png' | theme }}" alt=""></a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}

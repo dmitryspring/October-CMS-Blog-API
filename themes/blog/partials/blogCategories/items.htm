@@ -1,0 +1,10 @@
+{% for category in categories %}
+    {% set postCount = category.post_count %}
+    <div class="category__content">
+        <h5>{{ category.name }}</h5>
+        {% if postCount %}
+        <h3>{{ postCount }}</h3>
+        {% endif %}
+    </div>
+    <hr>
+{% endfor %}

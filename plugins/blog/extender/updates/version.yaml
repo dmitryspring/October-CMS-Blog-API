@@ -1,0 +1,10 @@
+1.0.1:
+    - Creating DB tables for tags
+    - create_tags_table.php
+    - create_post_tag_table.php
+1.0.2:
+    - Seeding the data
+    - seed_categories_tags_posts.php
+1.0.3:
+    - Seeding images
+    - seed_images_to_posts.php

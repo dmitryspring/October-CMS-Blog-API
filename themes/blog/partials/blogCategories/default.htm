@@ -1,0 +1,8 @@
+{% if __SELF__.categories|length > 0 %}
+    {% partial __SELF__ ~ "::items"
+        categories = __SELF__.categories
+        currentCategorySlug = __SELF__.currentCategorySlug
+    %}
+{% else %}
+    <p>No categories were found.</p>
+{% endif %}
