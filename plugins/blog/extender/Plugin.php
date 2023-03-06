@@ -14,6 +14,9 @@ use \Illuminate\Database\Eloquent\Factories\Factory as EloquentFactory;
  */
 class Plugin extends PluginBase
 {
+    public $require = [
+        'RainLab.Blog'
+    ];
     /**
      * pluginDetails about this plugin.
      */
